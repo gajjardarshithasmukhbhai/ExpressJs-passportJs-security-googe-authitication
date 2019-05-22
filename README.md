@@ -17,6 +17,8 @@
  * **step 2:**
 &nbsp;&nbsp;  Then After the passport Js code import 
 * **step 3:**
+&nbsp;&nbsp;  Then After the Authorize Api key for Google + Login is **https://www.googleapis.com/auth/plus.login** 
+* **step 4:**
 &nbsp;&nbsp;and the Google credential and secret Id are set in that passport Js credential
  
  
