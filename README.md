@@ -66,6 +66,7 @@ passport.use(new GoogleStrategy({
 	console.log(profile.emails[0].value);//get eamil just like this thorugh callback
 }))
 ```
-
+* **step 8:**
+&nbsp;&nbsp;
 </div>
 
