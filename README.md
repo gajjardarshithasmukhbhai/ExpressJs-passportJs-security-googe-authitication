@@ -68,5 +68,43 @@ passport.use(new GoogleStrategy({
 ```
 * **step 8:**
 &nbsp;&nbsp;
+when you want to take profile Data like e-mail,profile photo,username,family Name
+you take intialize
+```javascript
+app.use(passportx.initialize());
+app.use(passportx.session());
+```
+then after you require set session and cookies store just like this
+```javascript
+app.get('/passport-google',passportx.authenticate('google',{
+	//object which user data you require tell me about the user
+	scope:['profile','https://www.googleapis.com/auth/userinfo.email'],
+	// successRedirect: '/accessed',
+ //  	failureRedirect: '/access',
+ //  	session: false
+})
+);
+```
+* **step 9:**
+&nbsp;&nbsp;then after session set in so all data in bytestream and then after decode it **(-:**
+```javascript
+passportx.serializeUser(function(user, done) {
+  done(null, user);
+})
+passportx.deserializeUser(function(user, done) {
+  done(null, user);
+  EMail=user._json.picture;
+});
+
+
+app.get('/gajjurock', 
+  passportx.authenticate('google'),
+  (req,res)=>{
+    // Successful authentication, redirect home.
+    // console.log('hello->',EMail);
+    res.redirect('/');
+  });
+
+```
 </div>
 
