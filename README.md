@@ -26,9 +26,9 @@ const passport=require('passport');//import the file
 const GoogleStrategy=require('passport-google-oauth20');//import the google auth 20
 passport.use(new GoogleStrategy({
 	callbackURL:'/gajjurock',
-	clientID:'696016007441-gtdnqjpl3auit24qf2859efaks3t1lk2.apps.googleusercontent.com',
-	clientSecret:'XqHHv9dFyJc18qPZvkY3tZFO',
-	refreshToken:'1/-PAawTLhMi35jc5lubN-SMBVV67HjX8cua9Efq-N8vb8OpfOWs9T-tb8mS0NMfiF',
+	clientID:'security point i not show',
+	clientSecret:'security point i not show',
+	refreshToken:'security point i not show',
 },
 ()=>{
 	//callback function
