@@ -51,7 +51,7 @@ app.get('/passport-google',passportx.authenticate('google',{
 	scope:['profile','https://www.googleapis.com/auth/userinfo.email']
 }));
 ```
-**passport.js file
+**passport.js file**
 ```javascript
 passport.use(new GoogleStrategy({
 	callbackURL:'/gajjurock',
