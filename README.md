@@ -21,5 +21,25 @@
 * **step 4:**
 &nbsp;&nbsp;and the Google credential and secret Id are set in that passport Js credential
  
- 
+```javascript
+const passport=require('passport');//import the file
+const GoogleStrategy=require('passport-google-oauth20');//import the google auth 20
+passport.use(new GoogleStrategy({
+	callbackURL:'/gajjurock',
+	clientID:'696016007441-gtdnqjpl3auit24qf2859efaks3t1lk2.apps.googleusercontent.com',
+	clientSecret:'XqHHv9dFyJc18qPZvkY3tZFO',
+	refreshToken:'1/-PAawTLhMi35jc5lubN-SMBVV67HjX8cua9Efq-N8vb8OpfOWs9T-tb8mS0NMfiF',
+},
+()=>{
+	//callback function
+}))
+```
 </div>
+* **step 5:**
+&nbsp;&nbsp;then after in google Authroize google redirect set same as you set the callbackURL property in step 4
+and then after it's routes is set like
+```javascript
+app.get('/gajjurock',(req,res,next)=>{
+	res.send('<h1>HEllO</h1>');
+});
+```
