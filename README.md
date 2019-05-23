@@ -34,7 +34,6 @@ passport.use(new GoogleStrategy({
 	//callback function
 }))
 ```
-</div>
 * **step 5:**
 &nbsp;&nbsp;then after in google Authroize google redirect set same as you set the callbackURL property in step 4
 and then after it's routes is set like
@@ -43,3 +42,5 @@ app.get('/gajjurock',(req,res,next)=>{
 	res.send('<h1>HEllO</h1>');
 });
 ```
+</div>
+
