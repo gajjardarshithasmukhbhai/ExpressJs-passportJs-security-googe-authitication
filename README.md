@@ -55,8 +55,8 @@ app.get('/passport-google',passportx.authenticate('google',{
 ```javascript
 passport.use(new GoogleStrategy({
 	callbackURL:'/gajjurock',
-	clientID:'gtdnqjpl3auit24qf2859efaks3t1lk2.apps.googleusercontent.com',
-	clientSecret:'vkY3tZFO',
+	clientID:'ercontent.com',
+	clientSecret:'vO',
 	refreshToken:'tb8mS0NMfiF',
 },
 (accessToken,refreshToken,profile,done)=>{
