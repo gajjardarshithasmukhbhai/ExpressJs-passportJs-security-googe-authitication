@@ -4,10 +4,13 @@ const session=require('express-session');
 const MongoDBStore=require('connect-mongodb-session')(session);
 const path=require('path');
 var csrf=require('csurf');
+var EMail;
 var csrfprotection=csrf();
 const nodemailer=require('nodemailer');
 const bodyParser=require('body-parser');
 const Add_product=require('./controller/Add_product.js');
+const passportx=require('passport');
+const passport=require('./modal/passport.js');
 const order=require('./controller/Add_product.js');
 const Admin_product=require('./controller/Add_product.js');
 const cart=require('./controller/Add_product.js');
@@ -44,6 +47,11 @@ app.use(session({
 
 
 // app.use(csrfprotection);//csrf protected website
+app.use(passportx.initialize());
+app.use(passportx.session());
+
+
+
 app.use("/mdB",express.static(path.join(__dirname,"mdBootstrap/")));
 app.use("/md",express.static(path.join(__dirname,"MDBPro/")));
 app.use("/css",express.static(path.join(__dirname,"css/css/")));
@@ -53,6 +61,19 @@ app.use("/jquery",express.static(path.join(__dirname,"node_modules/jquery/dist/"
 app.use("/anime-js",express.static(path.join(__dirname,"node_modules/anime/")));
 app.use('/notification',express.static(path.join(__dirname,"node_modules/toastr/")));
 app.use(bodyParser.urlencoded({extended:true}));
+app.get('/passport-google',passportx.authenticate('google',{
+	//object which user data you require tell me about the user
+	scope:['profile','https://www.googleapis.com/auth/userinfo.email'],
+	// successRedirect: '/accessed',
+ //  	failureRedirect: '/access',
+ //  	session: false
+})
+);
+
+app.get('/github',passportx.authenticate('github'));
+app.get('/LinkedIn',passportx.authenticate('linkedin'));
+app.get('/instagramx',passportx.authenticate('instagram'));
+
 
 app.post("/signup-enter",Add_product.signup_enter_controller);
 
@@ -69,19 +90,74 @@ app.post("/Add_product",add_product.add_products_controller);
 app.get("/cart",csrfprotection,cart.cart_controller);
 app.post("/Cart",csrfprotection,cart.carts_controller);
 app.get("/Carts",csrfprotection,cart.cart_show_controller);//change
-
 app.get("/LOGOUT",csrfprotection,Add_product.Logout_controller);//change
-
 app.post("/Cart/:deleteId",csrfprotection,cart.carts_delete_controller);
+
+
+//serializeUser and deserializeUser basically use for session create and destory so identify unique user
+//serialize call when user click 
+
+passportx.serializeUser(function(user, done) {
+  done(null, user);
+})
+passportx.deserializeUser(function(user, done) {
+  done(null, user);
+  // EMail=user._json.picture;
+});
+
+
+app.get('/gajjurock', 
+  passportx.authenticate('google'),
+  (req,res)=>{
+    // Successful authentication, redirect home.
+    // console.log('hello->',EMail);
+    res.redirect('/');
+  });
+app.get('/instagram', 
+  passportx.authenticate('instagram'),
+  (req,res)=>{
+    // Successful authentication, redirect home.
+    // console.log('hello->',EMail);
+    res.redirect('/');
+  });
+app.get('/linkedin', 
+  passportx.authenticate('linkedin'),
+  (req,res)=>{
+    // Successful authentication, redirect home.
+    // console.log('hello->',EMail);
+    res.redirect('/');
+  });
+app.get('/gajjurocks', 
+  passportx.authenticate('github'),
+  (req,res)=>{
+    // Successful authentication, redirect home.
+    // console.log('hello->',EMail);
+    res.redirect('/');
+  });
+app.get('/instagram', 
+  passportx.authenticate('instagram'),
+  (req,res)=>{
+    // Successful authentication, redirect home.
+    // console.log('hello->',EMail);
+    res.redirect('/');
+  });
+// app.use('/gajjurock',passportx.authenticate('google',{
+// 	successRedirect: '/',failureRedirect: '/login' 
+// },(req,res,next)=>{
+// 	res.redirect('/');
+// }));
+
 app.get("/product",csrfprotection,product.products_controller);
 app.get("/product/:productId",csrfprotection,product.product_controller);
 app.get("/cart_redirect",csrfprotection,cart.carts_redirect_controller);
 app.get("/shop",csrfprotection,shop.shop_controller);
+
 app.get("/",home.home_controller);
 app.use((req,res,next)=>{
 	res.status(404).render("404",{error:"url is wrong"});
 })
 mongoConnect(() => {
+
     app.listen(5060, (wer) => console.log("i am new"));
 });
 //fake emailId:-cismox.darshit@gmail.com

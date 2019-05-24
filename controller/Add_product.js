@@ -1,8 +1,3 @@
-//client-:346380356857-qvdqul9bikn8fung0ia4tvqnsc70fdip.apps.googleusercontent.com
-//clientsecret:-3FtlfrqEvLPqG0ghNCVWOSQ
-
-
-
 const path=require('path');
 let inner_data=[];
 const fs=require('fs');
@@ -17,6 +12,7 @@ let getdb=require('../util/database.js');
 let mongodb=require('mongodb');
 let bcrypt=require('bcryptjs');
 let nodemailer=require('nodemailer');
+let passportJs=require('../modal/passport.js');
 let transporter=nodemailer.createTransport({
 host: 'smtp.gmail.com',
 direct:false ,
@@ -30,6 +26,9 @@ auth:{
 	    refreshToken:'1/-PAawTLhMi35jc5lubN-SMBVV67HjX8cua9Efq-N8vb8OpfOWs9T-tb8mS0NMfiF',
 	}
 });
+// exports.passport_js_google=(req,res,next)=>{
+//  //call passport js
+// }
 exports.signup_enter_controller=(req,res,next)=>{
 	let email=req.body.email1;
 	let password=req.body.password1;
