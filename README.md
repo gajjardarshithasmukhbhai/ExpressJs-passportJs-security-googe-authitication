@@ -108,8 +108,8 @@ app.get('/gajjurock',
 ```
 * **step 9:**
 ```text
-&nbsp;&nbsp;basically when you use the passport js so that time one thing reminder in passport js
-passport js is middelware and it is based on the clienId and clientSecret and callback url so when you work so that time callback url
+->basically when you use the passport js so that time one thing reminder in passport js
+->passport js is middelware and it is based on the clienId and clientSecret and callback url so when you work so that time callback url
 is same like the you mention in the developer console
 ```
 </div>
