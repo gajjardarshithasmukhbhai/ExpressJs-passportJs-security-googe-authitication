@@ -4,7 +4,7 @@ var InstagramStrategy = require('passport-instagram');
 var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 var passport=require('passport');
 passport.use(new GoogleStrategy({
-    clientID: "441-gtdnqjpl3auit24qf2859efaks3t1lk2.apps.googleusercontent.com",
+    clientID: "441-gtdnps.googleusercontent.com",
     clientSecret: "kY3tZFO",
     callbackURL: "http://localhost:5060/gajjurock",
   },
@@ -18,7 +18,7 @@ passport.use(new GoogleStrategy({
 
 passport.use(new GitHubStrategy({
     clientID: "5e41188f002",
-    clientSecret: "fca38cc98c6ba6847263f05",
+    clientSecret: "847263f05",
     callbackURL: "http://localhost:5060/gajjurocks",
   },
   (accessToken, refreshToken, profile, ck)=>{
@@ -30,8 +30,8 @@ passport.use(new GitHubStrategy({
   }
 ));
 passport.use(new InstagramStrategy({
-    clientID: "7a744d9bc2fa7fb060e37bb",
-    clientSecret: "3961be9322b2347",
+    clientID: "7a760e37bb",
+    clientSecret: "e9322b2347",
     callbackURL: "http://localhost:5060/instagram",
   },
   (accessToken, refreshToken, profile, ck)=>{
